@@ -10,6 +10,7 @@ function showParent() {
 	var parent = entityLoad('Parent', 1, true);
 	writeDump(parent);
 }
+
 function create() {
 
 	transaction {
@@ -44,9 +45,7 @@ function update() {
 			var parent = entityLoad('Parent', 1, true);
 			parent.setTitle('Title One - MOD');
 			parent.removeChildren();
-entitySave(parent);
-ormFlush();
-writeDump(parent);
+
 			var child = new xmdtransroot.model.beans.Child();
 			var child2 = new xmdtransroot.model.beans.Child();
 

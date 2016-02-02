@@ -16,16 +16,10 @@ component persistent="true" accessors="true" table="Parent" {
     }
 
     public void function removeChildren(){
-        // if( !IsNull( this.getChilds() ) )
-        //     ArrayClear( this.getChilds() );
-
         var children = this.getChilds();
         var len = ArrayLen( children );
         for ( var i = len; i > 0; i-- ) {
-            // children[i].removeParent(this);
             this.removeChild( children[i] );
-            // entityDelete( children[i] );
-            // ArrayDelete( variables.childs, children[i] );            
         }
     }
 
@@ -39,7 +33,6 @@ component persistent="true" accessors="true" table="Parent" {
     }
 
     public boolean function isValid() {
-        // if ( !hasChild() )
         return true;
     }
 
@@ -48,8 +41,6 @@ component persistent="true" accessors="true" table="Parent" {
             return;
 
         for( child in this.getChilds() ) { 
-            // writeDump(child);
-            // entitySave(child);
             child.save();
         }
     }
@@ -57,8 +48,6 @@ component persistent="true" accessors="true" table="Parent" {
     public void function save() {
         entitySave(this);
         this.saveChildren();
-        // if (this.getId() == 0)
-
     }
 }
 
