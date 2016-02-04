@@ -8,9 +8,7 @@ component accessors="true" {
     }
 
     public function newParent() {
-    	return variables.beanFactory.getBean('ParentBean');
-		// return new xmdtransroot.model.beans.Parent();
-		// return entityNew('Parent');
+    	return entityNew('Parent');
     }
 
     public function getParent( required numeric id ) {
