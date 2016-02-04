@@ -21,9 +21,10 @@ function create() {
 			var child = new xmdtransroot.model.beans.Child();
 			var child2 = new xmdtransroot.model.beans.Child();
 
-			// parent.setChilds( [child, child2] );
-			parent.addChild(child);
-			parent.addChild(child2);
+			parent.setChildren([child, child2]);
+			// parent.addChildren([child, child2]);
+			// parent.addChild(child);
+			// parent.addChild(child2);
 
 			if ( !parent.isValid() )
 				throw(type="validation", message="FAILED PARENT VALIDITY");
@@ -44,14 +45,14 @@ function update() {
 		try {
 			var parent = entityLoad('Parent', 1, true);
 			parent.setTitle('Title One - MOD');
-			parent.removeChildren();
+			// parent.removeChildren();
 
 			var child = new xmdtransroot.model.beans.Child();
 			var child2 = new xmdtransroot.model.beans.Child();
 
-			// // parent.setChilds( [child, child2] );
-			parent.addChild(child);
-			parent.addChild(child2);
+			parent.setChildren([child, child2]);
+			// parent.addChild(child);
+			// parent.addChild(child2);
 
 			if ( !parent.isValid() )
 				throw(type="validation", message="FAILED PARENT VALIDITY");

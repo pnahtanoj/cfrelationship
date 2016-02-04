@@ -1,4 +1,7 @@
 component persistent="true" accessors="true" table="Parent" {
+    
+    property name="datetimeService";
+
     property name="id" fieldtype="id" column="ParentID" generator="identity";
     property name="Title" type="string";
 
@@ -9,9 +12,11 @@ component persistent="true" accessors="true" table="Parent" {
         cfc="Child" 
         singularname="Child" 
         fkcolumn="ParentID"
+        cascade="all-delete-orphan"
         inverse="true";
 
     public function init(){
+        variables.Childs = [];
         return this;
     }
 
@@ -25,11 +30,19 @@ component persistent="true" accessors="true" table="Parent" {
 
     // convenience //
     public void function addChild( child ) {
-        if ( !hasChild() ) {
-            variables.Childs = [];
-        }
         ArrayAppend( variables.Childs, child );
         arguments.child.setParent( this );
+    }
+
+    public void function addChildren( children ) {
+        for (child in children) {
+            this.addChild(child);
+        }
+    }
+
+    public void function setChildren( children ) {
+        this.removeChildren();
+        this.addChildren( children );
     }
 
     public boolean function isValid() {
